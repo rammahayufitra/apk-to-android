@@ -1,14 +1,16 @@
 from kivy.app import App
-from kivy.uix.label import Label
+from kivy.uix.widget import Widget
+from kivy.graphics import Color, Rectangle
 
-class MainApp(App):
+class MyApp(App):
     def build(self):
-        label = Label(text='Hello from Kivy',
-                      size_hint=(.5, .5),
-                      pos_hint={'center_x': .5, 'center_y': .5})
+        # Membuat widget utama dengan latar belakang merah
+        root = Widget()
+        with root.canvas:
+            Color(1, 0, 0, 1)  # Warna merah dalam format RGBA
+            self.rect = Rectangle(pos=(0, 0), size=(800, 600))  # Ukuran jendela
 
-        return label
+        return root
 
 if __name__ == '__main__':
-    app = MainApp()
-    app.run()
+    MyApp().run()
