@@ -1,16 +1,19 @@
-from kivy.app import App
-from kivy.uix.widget import Widget
-from kivy.graphics import Color, Rectangle
+from kivymd.app import MDApp
+from kivymd.uix.list import OneLineIconListItem, IconLeftWidget
 
-class MyApp(App):
+class MainApp(MDApp):
     def build(self):
-        # Membuat widget utama dengan latar belakang merah
-        root = Widget()
-        with root.canvas:
-            Color(1, 0, 0, 1)  # Warna merah dalam format RGBA
-            self.rect = Rectangle(pos=(0, 0), size=(800, 600))  # Ukuran jendela
+        self.theme_cls.primary_palette = "Purple"
 
-        return root
+    def add_item(self, text):
+        new_list_item = OneLineIconListItem(text=text)
+        new_list_item.add_widget(
+            IconLeftWidget(icon = "language-python")
+            )
+        self.root.ids.listcontainer.add_widget(new_list_item)
+        self.root.ids.listinput.text = ''
 
-if __name__ == '__main__':
-    MyApp().run()
+
+if __name__ == "__main__":
+    app = MainApp()
+    app.run()

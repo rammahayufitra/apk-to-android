@@ -1,3 +1,0 @@
-kivy
-buildozer
-cython==0.29.19
